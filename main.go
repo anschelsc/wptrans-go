@@ -8,27 +8,10 @@ import (
 )
 
 const (
-	pageName = "Zamenhof"
+	pageName = "Jersey City"
 	lang = "en"
 	template = "http://%s.wikipedia.org/w/api.php?action=query&titles=%s&prop=langlinks&redirects&format=xml"
 )
-
-type Redirect struct {
-	From string "attr"
-	To   string "attr"
-}
-
-type Redirects struct {
-	R Redirect
-}
-
-type Query struct {
-	Redirects
-}
-
-type Api struct {
-	Query
-}
 
 func main() {
 	response, _, err := http.Get(fmt.Sprintf(template, lang, http.URLEscape(pageName)))
@@ -39,5 +22,5 @@ func main() {
 	defer response.Body.Close()
 	result := new(Api)
 	xml.Unmarshal(response.Body, result)
-	fmt.Println(result.Query.Redirects.R.To)
+	fmt.Println(result.Ll)
 }
