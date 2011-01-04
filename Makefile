@@ -7,6 +7,6 @@ include $(GOROOT)/src/Make.inc
 TARG=wptrans
 GOFILES=\
 	main.go\
-	xml.go\
+	xmltypes.go\
 
 include $(GOROOT)/src/Make.cmd
