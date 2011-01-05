@@ -20,7 +20,7 @@ func emptyDict() *Dict {
 }
 
 func (d *Dict) String() string {
-	ret := make([]string, 0)
+	ret := []string{"Original: " + d.original}
 	for i := 0; i != len(d.langs); i++ {
 		ret = append(ret, fmt.Sprintf("%s: %s", d.langs[i], d.trans[d.langs[i]]))
 	}
