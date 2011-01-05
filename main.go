@@ -2,25 +2,14 @@ package main
 
 import (
 	"fmt"
-	"http"
-	"xml"
-	"os"
 )
 
 const (
 	pageName = "Jersey City"
-	lang = "en"
-	template = "http://%s.wikipedia.org/w/api.php?action=query&titles=%s&prop=langlinks&redirects&format=xml"
+	lang     = "en"
 )
 
 func main() {
-	response, _, err := http.Get(fmt.Sprintf(template, lang, http.URLEscape(pageName)))
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-	defer response.Body.Close()
-	result := new(Api)
-	xml.Unmarshal(response.Body, result)
-	fmt.Println(result.Ll)
+	d := NewDict(lang, pageName)
+	fmt.Println(d)
 }

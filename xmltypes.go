@@ -2,6 +2,7 @@ package main
 
 type Api struct {
 	Query
+	Query_continue Continue "query-continue"
 }
 
 type Query struct {
@@ -22,6 +23,14 @@ type Langlinks struct {
 }
 
 type Ll struct {
-	Lang string "attr"
+	Lang        string "attr"
 	Translation string "chardata"
+}
+
+type Continue struct {
+	Langlinks LanglinksC
+}
+
+type LanglinksC struct {
+	Llcontinue string "attr"
 }

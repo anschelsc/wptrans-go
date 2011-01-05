@@ -8,5 +8,6 @@ TARG=wptrans
 GOFILES=\
 	main.go\
 	xmltypes.go\
+	dict.go\
 
 include $(GOROOT)/src/Make.cmd
