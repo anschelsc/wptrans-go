@@ -46,10 +46,11 @@ func NewDict(lang, title string) *Dict {
 	d.original = parsed.Title
 	for {
 		d.add(parsed.Ll)
-		cont := parsed.Query_continue.Langlinks.Llcontinue
+		cont := parsed.Any.Langlinks.Llcontinue
 		if cont == "" {
 			break
 		}
+		parsed = new(Api)
 		newResponse, _, _ := http.Get(base + "&llcontinue=" + cont)
 		defer newResponse.Body.Close()
 		xml.Unmarshal(newResponse.Body, parsed)

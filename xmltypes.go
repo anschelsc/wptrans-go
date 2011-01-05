@@ -2,7 +2,7 @@ package main
 
 type Api struct {
 	Query
-	Query_continue Continue "query-continue"
+	Any Continue //This field should be named Query-continue
 }
 
 type Query struct {
